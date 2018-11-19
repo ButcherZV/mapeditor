@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>game-sheet</name>
+    <events>
+        <variable constant="0" name="period" sid="527426065685761" static="0" type="number">0</variable>
+        <variable constant="0" name="darkness" sid="298985907237645" static="0" type="number">0</variable>
+        <variable constant="0" name="partOfDay" sid="189985675891987" static="0" type="text">day</variable>
+        <variable constant="0" name="timeHour" sid="474890057931682" static="0" type="number">18</variable>
+        <variable comment="how many seconds in real life is one minute in the game" constant="0" name="timePeriod" sid="207583538612904" static="0" type="number">0.05</variable>
+        <variable constant="0" name="timeMinute" sid="629531375990691" static="0" type="number">0</variable>
+        <event-group description="" sid="892718102013641" title="Game - Initialization">
+            <sub-events>
+                <event-block sid="573780534175886">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="299282458321718" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set spraying" sid="942650451700084" type="weather">
+                            <param id="0" name="State">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="544883786790391" type="txtTime">
+                            <param id="0" name="Text">zeropad(timeHour,2) &amp; &quot;:&quot; &amp; zeropad(timeMinute,2)</param>
+                        </action>
+                        <action id="-21" name="Reset global variables" sid="546280079333741" type="System" />
+                        <action id="-20" name="Set layout scale" sid="692203749629346" type="System">
+                            <param id="0" name="Scale">1.4</param>
+                        </action>
+                        <action disabled="1" id="-9" name="Destroy" sid="901998674021553" type="player" />
+                        <action id="1" name="Get item" sid="811102098398489" type="LocalStorage">
+                            <param id="0" name="Key">&quot;data&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="923271220235804">
+                    <conditions>
+                        <condition id="1" name="On item get" sid="881777842309261" type="LocalStorage">
+                            <param id="0" name="Key">&quot;data&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="11" name="Load" sid="568939092300744" type="MapData">
+                            <param id="0" name="JSON">LocalStorage.ItemValue</param>
+                        </action>
+                        <action id="0" name="Call function" sid="367358260421062" type="Function">
+                            <param id="0" name="Name">&quot;loadMap&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="531674115013214" title="Game - Functions">
+            <sub-events>
+                <event-group description="" sid="248629035008012" title="Load Map">
+                    <sub-events>
+                        <event-block sid="629480755495068">
+                            <conditions>
+                                <condition id="0" name="On function" sid="242254779844140" type="Function">
+                                    <param id="0" name="Name">&quot;loadMap&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="337730096233136" type="System">
+                                    <param id="0" name="Variable">buffer</param>
+                                    <param id="1" name="Value">MapData.At(mapX,mapY)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="811936541813697" type="System">
+                                    <param id="0" name="Variable">bufferMeta</param>
+                                    <param id="1" name="Value">tokenat(buffer,0,&quot;/&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="286189806930069" type="System">
+                                    <param id="0" name="Variable">bufferData</param>
+                                    <param id="1" name="Value">tokenat(buffer,1,&quot;/&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="409658608557370" type="System">
+                                    <param id="0" name="Variable">mapName</param>
+                                    <param id="1" name="Value">tokenat(bufferMeta,0,&quot;_&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="877965892578113" type="System">
+                                    <param id="0" name="Variable">mapX</param>
+                                    <param id="1" name="Value">tokenat(bufferMeta,1,&quot;_&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="180325675243085" type="System">
+                                    <param id="0" name="Variable">mapY</param>
+                                    <param id="1" name="Value">tokenat(bufferMeta,2,&quot;_&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="815787393887944" type="System">
+                                    <param id="0" name="Variable">playerX</param>
+                                    <param id="1" name="Value">tokenat(bufferMeta,3,&quot;_&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="906124192629825" type="System">
+                                    <param id="0" name="Variable">playerY</param>
+                                    <param id="1" name="Value">tokenat(bufferMeta,4,&quot;_&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="315595737332843" type="System">
+                                    <param id="0" name="Variable">playerPlaced</param>
+                                    <param id="1" name="Value">tokenat(bufferMeta,5,&quot;_&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="843920633122882" type="System">
+                                    <param id="0" name="Variable">weatherSelect</param>
+                                    <param id="1" name="Value">tokenat(bufferMeta,8,&quot;_&quot;)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="656048776776066" type="partRain">
+                                    <param id="0" name="Instance variable">intensity</param>
+                                    <param id="1" name="Value">int(tokenat(bufferMeta,9,&quot;_&quot;))</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="230153957688700" type="partSnow">
+                                    <param id="0" name="Instance variable">intensity</param>
+                                    <param id="1" name="Value">int(tokenat(bufferMeta,9,&quot;_&quot;))</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="497824796349740" type="fog">
+                                    <param id="0" name="Instance variable">speed</param>
+                                    <param id="1" name="Value">int(tokenat(bufferMeta,11,&quot;_&quot;))</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="910837710714035" type="fog">
+                                    <param id="0" name="Instance variable">trans</param>
+                                    <param id="1" name="Value">int(tokenat(bufferMeta,12,&quot;_&quot;))</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="556235768861948" type="player">
+                                    <param id="0" name="X">tilemap.TileToPositionX(playerX)</param>
+                                    <param id="1" name="Y">tilemap.TileToPositionY(playerY)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="708541797028339">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="789955969203386" type="System">
+                                            <param id="0" name="Variable">weatherSelect</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set spraying" sid="924790804384395" type="partRain">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                        <action id="18" name="Set timeout" sid="224853437265871" type="partRain">
+                                            <param id="0" name="Timeout">0.55</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="765303360927130">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="112131914377383" type="System" />
+                                        <condition id="-14" name="Compare variable" sid="992234797372181" type="System">
+                                            <param id="0" name="Variable">weatherSelect</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set spraying" sid="387916742160685" type="partSnow">
+                                            <param id="0" name="State">1</param>
+                                        </action>
+                                        <action id="18" name="Set timeout" sid="667326325774527" type="partSnow">
+                                            <param id="0" name="Timeout">15</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="167760412205187">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="945724426629248" type="System">
+                                            <param id="0" name="First value">int(tokenat(bufferMeta,10,&quot;_&quot;))</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="125808475328058" type="fog">
+                                            <param id="0" name="Instance variable">show</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-16" name="Set opacity" sid="730139802852664" type="fog">
+                                            <param id="0" name="Opacity">fog.trans</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="390169969109003">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="230788743820984" type="System">
+                                            <param id="0" name="Name">&quot;i&quot;</param>
+                                            <param id="1" name="Start index">0</param>
+                                            <param id="2" name="End index">6</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="953676072381711">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="283006869062285" type="System">
+                                                    <param id="0" name="Object">tilemap</param>
+                                                    <param id="1" name="Expression">tilemap.LayerNumber = loopindex(&quot;i&quot;) + 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Load" sid="135384154545495" type="tilemap">
+                                                    <param id="0" name="JSON">str(tokenat(bufferData,loopindex(&quot;i&quot;),&quot;|&quot;))</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="940053119213197" title="Game - Grid Movement">
+            <sub-events>
+                <event-block sid="451531216863453">
+                    <conditions>
+                        <condition id="1" name="On any key pressed" sid="704868497795372" type="Keyboard" />
+                        <condition id="-7" name="Compare instance variable" sid="996109614667375" type="player">
+                            <param id="0" name="Instance variable">state</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;moving&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="256743280523467" type="Function">
+                            <param id="0" name="Name">&quot;setDirection&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="652160578145621">
+                    <conditions>
+                        <condition id="0" name="On function" sid="272145320934426" type="Function">
+                            <param id="0" name="Name">&quot;setDirection&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>In this first function, we just give the player an X and Y direction based on his input and set required animation</comment>
+                        <event-block sid="536456572619593">
+                            <conditions />
+                            <actions>
+                                <action id="-10" name="Set value" sid="699803853176603" type="player">
+                                    <param id="0" name="Instance variable">directionX</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="814629392567128" type="player">
+                                    <param id="0" name="Instance variable">directionY</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block any="1" sid="172437893315918">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="619346006052002" type="Keyboard">
+                                    <param id="0" name="Key">65</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="482952230205009" type="player">
+                                    <param id="0" name="Instance variable">directionX</param>
+                                    <param id="1" name="Value">-1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="388292317608004" type="player">
+                                    <param id="0" name="Animation">&quot;left&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="761732107726595">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="414020575904051" type="System" />
+                                <condition id="2" name="Key is down" sid="512369935533704" type="Keyboard">
+                                    <param id="0" name="Key">68</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="772318987395911" type="player">
+                                    <param id="0" name="Instance variable">directionX</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="960602812834332" type="player">
+                                    <param id="0" name="Animation">&quot;right&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="763786624186347">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="399588104781241" type="System" />
+                                <condition id="2" name="Key is down" sid="756141523911247" type="Keyboard">
+                                    <param id="0" name="Key">87</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="121010106030574" type="player">
+                                    <param id="0" name="Instance variable">directionY</param>
+                                    <param id="1" name="Value">-1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="642275320292829" type="player">
+                                    <param id="0" name="Animation">&quot;up&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="155877926832654">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="297525754577429" type="System" />
+                                <condition id="2" name="Key is down" sid="366623239119928" type="Keyboard">
+                                    <param id="0" name="Key">83</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="531621172131093" type="player">
+                                    <param id="0" name="Instance variable">directionY</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="174415271682181" type="player">
+                                    <param id="0" name="Animation">&quot;down&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block any="1" sid="843051288955388">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="745067476198489" type="player">
+                                    <param id="0" name="Instance variable">directionX</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="522141833725478" type="player">
+                                    <param id="0" name="Instance variable">directionY</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="893848407735109" type="Function">
+                                    <param id="0" name="Name">&quot;checkCollision&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="847806808991941">
+                    <conditions>
+                        <condition id="0" name="On function" sid="377431670770727" type="Function">
+                            <param id="0" name="Name">&quot;checkCollision&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>We check if the cell in the direction the player is moving towards contains a block tile. If not, moveTo function is called, which moves the character to the next cell.</comment>
+                        <event-block any="1" sid="202673439141307">
+                            <conditions>
+                                <condition id="-33" name="Pick by comparison" sid="255486563457202" type="System">
+                                    <param id="0" name="Object">tilemap</param>
+                                    <param id="1" name="Expression">tilemap.LayerName</param>
+                                    <param id="2" name="Comparison">0</param>
+                                    <param id="3" name="Value">&quot;Block&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <comment>Current cell (playerX) + Player.direction gives us the coordinates of the cells the player wants to move to.</comment>
+                                <event-block any="1" sid="953565633759702">
+                                    <conditions>
+                                        <condition id="0" name="Compare tile at" sid="812108367019334" type="tilemap">
+                                            <param id="0" name="Tile X">playerX + player.directionX</param>
+                                            <param id="1" name="Tile Y">playerY + player.directionY</param>
+                                            <param id="2" name="Comparison">0</param>
+                                            <param id="3" name="Tile">755</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="561604412082309" type="System">
+                                            <param id="0" name="First value">playerX + player.directionX</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="879961676950459" type="System">
+                                            <param id="0" name="First value">playerX + player.directionX</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">37</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="247117478050012" type="System">
+                                            <param id="0" name="First value">playerY + player.directionY</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="266186596639514" type="System">
+                                            <param id="0" name="First value">playerY + player.directionY</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">19</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="636728006966891" type="player">
+                                            <param id="0" name="Instance variable">isColiding</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="315805241320564">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="330220526855160" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="107734652507753" type="player">
+                                            <param id="0" name="Instance variable">isColiding</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="784873922896101" type="Function">
+                                            <param id="0" name="Name">&quot;moveTo&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="465989184168668">
+                    <conditions>
+                        <condition id="0" name="On function" sid="575256927207723" type="Function">
+                            <param id="0" name="Name">&quot;moveTo&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable comment=" increase or decrease players movement speed with this variable" constant="0" name="moveTime" sid="471394190171025" static="0" type="number">0.25</variable>
+                        <event-block sid="144336401059924">
+                            <conditions />
+                            <actions>
+                                <action id="-10" name="Set value" sid="779688781873715" type="player">
+                                    <param id="0" name="Instance variable">startCellX</param>
+                                    <param id="1" name="Value">playerX</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="899303531546597" type="player">
+                                    <param id="0" name="Instance variable">startCellY</param>
+                                    <param id="1" name="Value">playerY</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="391045666499471" type="System">
+                                    <param id="0" name="Variable">playerX</param>
+                                    <param id="1" name="Value">playerX + player.directionX</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="593893840047351" type="System">
+                                    <param id="0" name="Variable">playerY</param>
+                                    <param id="1" name="Value">playerY + player.directionY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="286888655543264">
+                            <conditions />
+                            <actions>
+                                <action id="-10" name="Set value" sid="749074855110542" type="player">
+                                    <param id="0" name="Instance variable">startX</param>
+                                    <param id="1" name="Value">Self.X</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="554774706053377" type="player">
+                                    <param id="0" name="Instance variable">startY</param>
+                                    <param id="1" name="Value">Self.Y</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="420979042165882" type="player">
+                                    <param id="0" name="Instance variable">targetX</param>
+                                    <param id="1" name="Value">tilemap.TileToPositionX(playerX)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="510995302539825" type="player">
+                                    <param id="0" name="Instance variable">targetY</param>
+                                    <param id="1" name="Value">tilemap.TileToPositionY(playerY)</param>
+                                </action>
+                                <action behavior="Timer" id="0" name="Start timer" sid="561963222735066" type="player">
+                                    <param id="0" name="Duration">moveTime</param>
+                                    <param id="1" name="Type">0</param>
+                                    <param id="2" name="Tag">&quot;Moving&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="928470990258333" type="player">
+                                    <param id="0" name="Instance variable">state</param>
+                                    <param id="1" name="Value">&quot;moving&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="815816133615043">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="188727352418136" type="player">
+                            <param id="0" name="Instance variable">state</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;moving&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="ratio" sid="606145651399401" static="0" type="number">0</variable>
+                        <event-block sid="995716028450788">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="923929342910170" type="System">
+                                    <param id="0" name="Variable">ratio</param>
+                                    <param id="1" name="Value">player.Timer.CurrentTime(&quot;Moving&quot;) / player.Timer.Duration(&quot;Moving&quot;)</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="909588858931748" type="player">
+                                    <param id="0" name="X">lerp(self.startX,Self.targetX,ratio)</param>
+                                    <param id="1" name="Y">lerp(self.startY,Self.targetY,ratio)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="155249191878575">
+                            <conditions>
+                                <condition behavior="Timer" id="0" name="On timer" sid="747136521012089" type="player">
+                                    <param id="0" name="Tag">&quot;Moving&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="908446510326480" type="player">
+                                    <param id="0" name="X">Self.targetX</param>
+                                    <param id="1" name="Y">Self.targetY</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="258335040237989" type="player">
+                                    <param id="0" name="Instance variable">state</param>
+                                    <param id="1" name="Value">&quot;idle&quot;</param>
+                                </action>
+                                <action id="0" name="Call function" sid="792929081445441" type="Function">
+                                    <param id="0" name="Name">&quot;setDirection&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="645633783005452">
+                    <conditions />
+                    <actions />
+                </event-block>
+                <event-block sid="381024586036320">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="875799500830268" type="player">
+                            <param id="0" name="Instance variable">state</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;idle&quot;</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="596729211352370" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Stop" sid="956744078209944" type="player" />
+                        <action id="5" name="Set frame" sid="994262992317603" type="player">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="477290518949607" title="Game - Common">
+            <sub-events>
+                <event-block sid="915659278513706">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="293061559386318" type="fog">
+                            <param id="0" name="Instance variable">show</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-5" name="Set width" sid="895575460084083" type="fog">
+                            <param id="0" name="Width">Self.Width+self.speed+1*dt</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="821570835036609" type="fog">
+                            <param id="0" name="X">Self.X-Self.speed-1*dt</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="533819059003186" title="Game - Time and Day-Night">
+            <sub-events>
+                <comment>Right now it&apos;s set to 5 seconds, so by changing value of &quot;Every X seconds&quot; event, you can change that</comment>
+                <event-block sid="360463598081400">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="737082440419227" type="System">
+                            <param id="0" name="Interval (seconds)">timePeriod</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="772943382080979">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="822126656302155" type="System">
+                                    <param id="0" name="Variable">timeMinute</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">58</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="551914496314693" type="System">
+                                    <param id="0" name="Variable">timeMinute</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="914265217961163">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="368538400633424" type="System" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="715209551854349">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="499201827204724" type="System">
+                                            <param id="0" name="Variable">timeHour</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Value">22</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="214597794850361" type="System">
+                                            <param id="0" name="Variable">timeHour</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="930288850592936" type="System">
+                                            <param id="0" name="Variable">timeMinute</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="718215972505127">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="448370458324655" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="236571425601243" type="System">
+                                            <param id="0" name="Variable">timeMinute</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="364477687217901" type="System">
+                                            <param id="0" name="Variable">timeHour</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="698698879504328">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Set text" sid="206788245941264" type="txtTime">
+                                    <param id="0" name="Text">zeropad(timeHour,2) &amp; &quot;:&quot; &amp; zeropad(timeMinute,2) &amp; &quot; - Dark: &quot; &amp; LayerOpacity(&quot;Darkness&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Make game world darker</comment>
+                <event-block any="1" sid="262109035465576">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="579076345812658" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">19</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="599147174014567" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="246140656660218">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="191022067353336" type="System">
+                                    <param id="0" name="Interval (seconds)">timePeriod</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-18" name="Set layer opacity" sid="308747820856013" type="System">
+                                    <param id="0" name="Layer">&quot;Darkness&quot;</param>
+                                    <param id="1" name="Opacity">LayerOpacity(&quot;Darkness&quot;) + 0.19</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Make game world lighter</comment>
+                <event-block sid="217181757363513">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="728298800254585" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="545845360872637" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">8</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="899169689228412">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="974534081806223" type="System">
+                                    <param id="0" name="Interval (seconds)">timePeriod</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-18" name="Set layer opacity" sid="997658273500627" type="System">
+                                    <param id="0" name="Layer">&quot;Darkness&quot;</param>
+                                    <param id="1" name="Opacity">LayerOpacity(&quot;Darkness&quot;) - 0.26</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Set day</comment>
+                <event-block sid="283970263651698">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="770596220247158" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">8</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="658302778537729" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">19</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="336624898159777" type="System">
+                            <param id="0" name="Variable">partOfDay</param>
+                            <param id="1" name="Value">&quot;day&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Set night</comment>
+                <event-block any="1" sid="704545186612648">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="515239754750357" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">19</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="527074341301787" type="System">
+                            <param id="0" name="Variable">timeHour</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">8</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="529804968059459" type="System">
+                            <param id="0" name="Variable">partOfDay</param>
+                            <param id="1" name="Value">&quot;night&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Level Editor</name>
+    <description></description>
+    <version>1.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website></author-website>
+    <app-id></app-id>
+    <unique-id>2qpiupr2gjili</unique-id>
+    <saved-with-version>26500</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="List" version="1">List</plugin>
+        <plugin author="Scirra" id="LocalStorage" version="1">Local storage</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Tilemap" version="1">Tilemap</plugin>
+        <plugin author="Scirra" id="filechooser" version="1">File chooser</plugin>
+        <plugin author="Scirra" id="sliderbar" version="1">Slider bar</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="Timer" version="1">Timer</behavior>
+    </used-behaviors>
+    <used-effects>
+        <effect author="Scirra" id="multiply">Multiply</effect>
+        <effect author="Scirra" id="warpradial">Warp Radial</effect>
+    </used-effects>
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>1920</width>
+        <height>1080</height>
+    </window-size>
+    <pixel-rounding>1</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <first-layout>MapEditor</first-layout>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">No</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Fullscreen scaling quality">Low</prop>
+        <prop name="Hide address bar">No</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Preview browser">NW.js</prop>
+        <prop name="Sampling">Point</prop>
+        <prop name="Use iOS retina display">All devices</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-folder name="Buttons">
+            <object-type name="btnFill" sid="658590572142411">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnImport" sid="371248904601174">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnNew" sid="348657692557412">
+                <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="clicked" sid="215860997965016" type="number" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Timer" sid="864561671014882">
+                        <behavior id="Timer" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+            <object-type name="btnExport" sid="365710003536135">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnSet" sid="825117957189634">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="Button" sid="489046059469498">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnSave" sid="507548590916160">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnGo" sid="200956700583332">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="chkGrid" sid="253762714681755">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnPlay" sid="263232485816027">
+                <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="isPlaying" sid="511304806476308" type="boolean" />
+                </instance-variables>
+            </object-type>
+            <object-type name="chkBlock" sid="326542421387480">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="chkSafe" sid="693531890516514">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="chkSave" sid="202776138979869">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="chkFX" sid="988690214463160">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnRNDname" sid="276758698422817">
+                <plugin id="Button" />
+            </object-type>
+        </object-folder>
+        <object-folder name="Plugins">
+            <object-type name="AJAX" sid="259649769292361">
+                <plugin id="AJAX" />
+            </object-type>
+            <object-type name="Audio" sid="2722091819329769">
+                <plugin id="Audio" />
+            </object-type>
+            <object-type name="Browser" sid="3498868852026895">
+                <plugin id="Browser" />
+            </object-type>
+            <object-type name="Keyboard" sid="4436305314906168">
+                <plugin id="Keyboard" />
+            </object-type>
+            <object-type name="Mouse" sid="3506161195311074">
+                <plugin id="Mouse" />
+            </object-type>
+            <object-type name="Function" sid="927354955221860">
+                <plugin id="Function" />
+            </object-type>
+        </object-folder>
+        <object-folder name="Inputs">
+            <object-type name="fileLoad" sid="511902525096388">
+                <plugin id="filechooser" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="301720216678018">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+            <object-type name="inputName" sid="322997353218544">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputX" sid="335357143786562">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputY" sid="910569402656051">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="layerList" sid="957318762829037">
+                <plugin id="List" />
+            </object-type>
+            <object-type name="tileList" sid="573812005129933">
+                <plugin id="List" />
+            </object-type>
+            <object-type name="weatherList" sid="843394126216718">
+                <plugin id="List" />
+            </object-type>
+            <object-type name="fogList" sid="773708498752984">
+                <plugin id="List" />
+            </object-type>
+            <object-type name="weatherIntensity" sid="346543721315768">
+                <plugin id="sliderbar" />
+            </object-type>
+            <object-type name="fogTransparency" sid="587705610695338">
+                <plugin id="sliderbar" />
+            </object-type>
+            <object-type name="fogSpeed" sid="976120682626683">
+                <plugin id="sliderbar" />
+            </object-type>
+            <object-type name="inputNPCname" sid="219512328161962">
+                <plugin id="TextBox" />
+            </object-type>
+        </object-folder>
+        <object-folder name="Text">
+            <object-type name="INFO" sid="740982986696021">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtExport" sid="979477924958610">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtHelp" sid="951240327928474">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtInfo" sid="805945141726773">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtLoad" sid="917150162899521">
+                <plugin id="Text" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="669058702284605">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+            <object-type name="txtDebug" sid="903374868567371">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtInfo2" sid="554471814379009">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtCord" sid="439575893009367">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtTime" sid="759857027924197">
+                <plugin id="Text" />
+            </object-type>
+        </object-folder>
+        <object-folder name="Graphics">
+            <object-type name="bgHelp" sid="295944096846105">
+                <plugin id="TiledBg" />
+                <texture />
+            </object-type>
+            <object-type name="bgLoad" sid="261335390135229">
+                <plugin id="TiledBg" />
+                <texture />
+            </object-type>
+            <object-type name="border" sid="646702765553585">
+                <plugin id="TiledBg" />
+                <texture />
+            </object-type>
+            <object-type name="moveTo" sid="414952337739616">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="653283767428528" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="selector" sid="674802464746713">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="2" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="792080735112240" speed="3">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Predrag\Downloads\New Piskel 2 (2).png" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="bgCross" sid="430541369519701">
+                <plugin id="TiledBg" />
+                <texture original-source="C:\Users\Predrag\Desktop\1.png" />
+            </object-type>
+            <object-type name="tileFunc" sid="392621291714347">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="id" sid="661540869100040" type="number" />
+                </instance-variables>
+                <animation-folder>
+                    <animation framecount="3" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="690716560441921" speed="0">
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\1.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\2.png">
+                            <collision-poly>
+                                <point x="0.15625" y="0.15625" />
+                                <point x="0.5" y="0.125" />
+                                <point x="0.84375" y="0.15625" />
+                                <point x="0.84375" y="0.84375" />
+                                <point x="0.5" y="0.875" />
+                                <point x="0.15625" y="0.84375" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\1.png">
+                            <collision-poly>
+                                <point x="0.15625" y="0.175781" />
+                                <point x="0.5" y="0.140625" />
+                                <point x="0.84375" y="0.175781" />
+                                <point x="0.84375" y="0.949219" />
+                                <point x="0.5" y="0.984375" />
+                                <point x="0.15625" y="0.949219" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="arrowsXY" sid="350789583051999">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="4" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="115589155461966" speed="0">
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Predrag\Downloads\left_arrow.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Predrag\Downloads\right_arrow.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Predrag\Downloads\down_arrow.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Predrag\Downloads\up_arrow.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="tilemap" sid="144580254278384">
+                <plugin id="Tilemap" />
+                <texture original-source="C:\Users\User\Desktop\tileset.png" />
+                <tiles />
+            </object-type>
+            <object-type name="tilePreview" sid="431030226758355">
+                <plugin id="Tilemap" />
+                <texture original-source="C:\Users\User\Desktop\tileset.png" />
+                <tiles />
+            </object-type>
+            <object-type name="tileIndex" sid="625470085996013">
+                <plugin id="Tilemap" />
+                <texture original-source="C:\Users\User\Desktop\tileset.png" />
+                <tiles />
+            </object-type>
+            <object-type name="grid" sid="312035540575099">
+                <plugin id="TiledBg" />
+                <texture />
+            </object-type>
+            <object-type name="playerTile" sid="297603862670951">
+                <plugin id="Tilemap" />
+                <texture original-source="C:\Users\User\Desktop\1.png" />
+                <tiles />
+            </object-type>
+            <object-type name="playerPrev" sid="403211083235594">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Timer" sid="589971394786616">
+                        <behavior id="Timer" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="1" name="down" pingpong="1" repeatcount="1" repeatto="0" sid="522961098208095" speed="3">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                    <animation framecount="3" loop="1" name="up" pingpong="1" repeatcount="1" repeatto="0" sid="960413291971505" speed="3">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                    <animation framecount="3" loop="1" name="left" pingpong="1" repeatcount="1" repeatto="0" sid="690386030149628" speed="3">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                    <animation framecount="3" loop="1" name="right" pingpong="1" repeatcount="1" repeatto="0" sid="158086435453871" speed="3">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="fog" sid="944857263789613">
+                <plugin id="TiledBg" />
+                <instance-variables>
+                    <instance-variable name="show" sid="567402636333738" type="boolean" />
+                    <instance-variable name="speed" sid="738739204117116" type="number" />
+                    <instance-variable name="trans" sid="828456337861734" type="number" />
+                </instance-variables>
+                <effects>
+                    <effect-type name="WarpRadial">
+                        <effect id="warpradial" />
+                    </effect-type>
+                </effects>
+                <texture original-source="C:\Users\Predrag\Desktop\fog_texture_by_finding_the_time-d637xrm.png" />
+            </object-type>
+            <object-type name="partRain" sid="100621963103448">
+                <plugin id="Particles" />
+                <instance-variables>
+                    <instance-variable name="intensity" sid="438686508681423" type="number" />
+                </instance-variables>
+                <texture original-source="C:\Users\Predrag\Desktop\ra.png" />
+            </object-type>
+            <object-type name="partSnow" sid="135843032419116">
+                <plugin id="Particles" />
+                <instance-variables>
+                    <instance-variable name="intensity" sid="598069804109077" type="number" />
+                </instance-variables>
+                <texture original-source="C:\Users\User\Desktop\1.png" />
+            </object-type>
+            <object-type name="tileIndicator" sid="698410659180985">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="2" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="591771575779024" speed="3">
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Predrag\Desktop\1.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Regular_game_back" sid="409063826846653">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="197463226786109" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Predrag\Downloads\Regular_game_back.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="npcGraphic" sid="826489860914130">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="178" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="623454641464889" speed="0">
+                        <frame duration="1" hotspotX="0" hotspotY="0" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\1.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\2.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\3.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\4.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\5.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\6.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\7.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\8.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\9.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\10.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\11.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\12.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\13.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\14.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\15.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\16.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\17.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\18.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\19.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\20.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\21.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\22.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\23.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\24.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\25.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\26.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\27.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\28.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\29.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\30.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\31.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\32.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\33.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\34.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\35.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\36.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\37.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\38.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\39.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\40.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\41.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\42.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\43.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\44.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\45.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\46.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\47.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\48.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\49.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\50.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\51.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\52.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\53.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\54.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\55.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\56.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\57.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\58.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\59.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\60.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\61.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\62.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\63.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\64.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\65.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\66.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\67.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\68.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\69.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\70.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\71.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\72.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\73.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\74.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\75.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\76.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\77.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\78.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\79.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\80.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\81.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\82.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\83.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\84.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\85.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\86.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\87.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\88.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\89.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\90.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\91.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\92.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\93.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\94.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\95.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\96.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\97.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\98.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\99.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\100.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\101.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\102.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\103.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\104.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\105.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\106.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\107.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\108.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\109.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\110.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\111.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\112.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\113.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\114.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\115.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\116.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\117.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\118.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\119.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\120.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\121.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\123.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\124.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\125.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\126.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\127.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\128.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\129.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\130.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\131.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\132.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\133.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\134.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\135.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\136.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\137.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\138.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\139.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\140.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\141.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\142.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\143.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\144.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\146.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\147.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\148.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\149.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\150.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\151.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\152.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\153.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\154.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\155.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\156.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\157.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\158.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\159.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\160.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\161.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\162.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\163.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\164.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\165.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\166.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\167.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\168.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\169.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\170.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\171.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\172.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\173.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\174.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\175.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\176.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\177.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\178.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\User\Desktop\npc\179.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder name="Data">
+            <object-type name="LocalStorage" sid="679400176630068">
+                <plugin id="LocalStorage" />
+            </object-type>
+            <object-type global="1" name="MapData" sid="147911906718443">
+                <plugin id="Arr" />
+            </object-type>
+        </object-folder>
+        <object-type name="player" sid="552810285179328">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="isColiding" sid="739290740292288" type="boolean" />
+                <instance-variable name="startCellX" sid="888150026182785" type="number" />
+                <instance-variable name="startCellY" sid="218809898444362" type="number" />
+                <instance-variable name="targetX" sid="171636157289876" type="number" />
+                <instance-variable name="targetY" sid="904666186707098" type="number" />
+                <instance-variable name="startX" sid="486648662962946" type="number" />
+                <instance-variable name="startY" sid="985538454335765" type="number" />
+                <instance-variable name="directionX" sid="856332237596428" type="number" />
+                <instance-variable name="directionY" sid="530154113112223" type="number" />
+                <instance-variable name="state" sid="856063790748580" type="string" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Timer" sid="390501969545928">
+                    <behavior id="Timer" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="3" loop="1" name="down" pingpong="1" repeatcount="1" repeatto="0" sid="769868369092059" speed="6">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="3" loop="1" name="up" pingpong="1" repeatcount="1" repeatto="0" sid="613025572599061" speed="6">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="3" loop="1" name="left" pingpong="1" repeatcount="1" repeatto="0" sid="290132376074032" speed="6">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="3" loop="1" name="right" pingpong="1" repeatcount="1" repeatto="0" sid="431914715801753" speed="6">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+    </object-folder>
+    <families>
+        <family name="weather" plugin-id="Particles" sid="378396304299240">
+            <members>
+                <member>partRain</member>
+                <member>partSnow</member>
+            </members>
+        </family>
+    </families>
+    <layout-folder>
+        <layout>MapEditor.xml</layout>
+        <layout>Game.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>editor-sheet.xml</event-sheet>
+        <event-sheet>game-sheet.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Keyboard" uid="3" />
+        <global-instance type="Mouse" uid="4" />
+        <global-instance type="Audio" uid="6">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
+        <global-instance type="Browser" uid="7" />
+        <global-instance type="AJAX" uid="13" />
+        <global-instance type="Function" uid="146" />
+        <global-instance type="LocalStorage" uid="129" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+        <file name="first-names.txt" />
+    </files-folder>
+</c2project>
