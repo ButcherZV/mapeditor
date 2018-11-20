@@ -10,10 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout active="1" order="1">MapEditor</layout>
-        <layout order="3">Game</layout>
-        <event-sheet order="2">editor-sheet</event-sheet>
-        <event-sheet order="4">game-sheet</event-sheet>
+        <layout order="0">MapEditor</layout>
+        <layout order="2">Game</layout>
+        <event-sheet active="1" order="1">editor-sheet</event-sheet>
+        <event-sheet order="3">game-sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -46,6 +46,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/tileIndicator/" />
         <folder expanded="1" path="animation-folder/Regular_game_back/" />
         <folder expanded="1" path="animation-folder/npcGraphic/" />
+        <folder expanded="1" path="animation-folder/arrowNPC/" />
+        <folder expanded="1" path="animation-folder/overlay/" />
         <folder expanded="1" path="animation-folder/player/" />
+        <folder expanded="1" path="animation-folder/npc/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/exit/" />
     </folders-expanded>
 </c2uistate>

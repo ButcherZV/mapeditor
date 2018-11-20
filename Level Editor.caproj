@@ -30,6 +30,7 @@
         <plugin author="Scirra" id="sliderbar" version="1">Slider bar</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="DragnDrop" version="1">Drag &amp; Drop</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Timer" version="1">Timer</behavior>
     </used-behaviors>
@@ -118,6 +119,21 @@
             <object-type name="btnRNDname" sid="276758698422817">
                 <plugin id="Button" />
             </object-type>
+            <object-type name="btnNPCgenerate" sid="940004900809353">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnNPCcreate" sid="219344782309130">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnNPCquest" sid="431400912362502">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnNPCcreate2" sid="153089682840914">
+                <plugin id="Button" />
+            </object-type>
+            <object-type name="btnNPCdelete" sid="386749720885406">
+                <plugin id="Button" />
+            </object-type>
         </object-folder>
         <object-folder name="Plugins">
             <object-type name="AJAX" sid="259649769292361">
@@ -180,6 +196,18 @@
             </object-type>
             <object-type name="inputNPCname" sid="219512328161962">
                 <plugin id="TextBox" />
+            </object-type>
+            <object-type name="npcType" sid="573880656381757">
+                <plugin id="List" />
+            </object-type>
+            <object-type name="inputNPCx" sid="622332689426095">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputNPCy" sid="392200104148945">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="modeList" sid="134068650759988">
+                <plugin id="List" />
             </object-type>
         </object-folder>
         <object-folder name="Text">
@@ -574,12 +602,32 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="arrowNPC" sid="405081321433597">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="600425343773371" speed="0">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.533333" original-source="C:\Users\Predrag\Downloads\left_arrow.png" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.533333" original-source="C:\Users\Predrag\Downloads\right_arrow.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="overlay" sid="710764184609156">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="724466060740503" speed="5">
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\1.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
         <object-folder name="Data">
             <object-type name="LocalStorage" sid="679400176630068">
                 <plugin id="LocalStorage" />
             </object-type>
             <object-type global="1" name="MapData" sid="147911906718443">
+                <plugin id="Arr" />
+            </object-type>
+            <object-type global="1" name="NpcData" sid="852481704077884">
                 <plugin id="Arr" />
             </object-type>
         </object-folder>
@@ -622,6 +670,242 @@
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="npc" sid="490465849958504">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="name" sid="420534696988520" type="string" />
+                <instance-variable name="type" sid="749769506500058" type="string" />
+                <instance-variable name="posX" sid="570231202474266" type="number" />
+                <instance-variable name="posY" sid="867993483333391" type="number" />
+                <instance-variable name="hasQuest" sid="235865718878123" type="number" />
+                <instance-variable name="id" sid="705200506163743" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="DragDrop" sid="776488718795333">
+                    <behavior id="DragnDrop" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="178" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="401477526865746" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\000.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\001.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\002.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\003.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\004.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\005.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\006.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\007.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\008.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\009.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\010.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\011.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\012.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\013.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\014.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\015.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\016.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\017.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\018.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\019.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\020.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\021.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\022.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\023.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\024.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\025.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\026.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\027.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\028.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\029.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\030.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\031.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\032.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\033.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\034.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\035.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\036.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\037.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\038.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\039.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\040.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\041.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\042.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\043.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\044.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\045.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\046.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\047.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\048.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\049.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\050.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\051.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\052.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\053.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\054.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\055.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\056.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\057.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\058.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\059.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\060.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\061.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\062.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\063.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\064.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\065.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\066.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\067.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\068.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\069.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\070.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\071.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\072.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\073.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\074.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\075.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\076.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\077.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\078.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\079.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\080.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\081.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\082.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\083.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\084.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\085.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\086.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\087.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\088.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\089.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\090.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\091.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\092.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\093.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\094.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\095.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\096.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\097.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\098.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\099.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\100.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\101.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\102.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\103.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\104.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\105.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\106.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\107.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\108.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\109.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\110.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\111.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\112.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\113.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\114.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\115.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\116.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\117.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\118.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\119.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\120.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\121.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\122.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\123.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\124.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\125.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\126.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\127.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\128.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\129.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\130.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\131.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\132.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\133.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\134.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\135.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\136.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\137.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\138.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\139.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\140.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\141.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\142.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\143.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\144.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\145.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\146.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\147.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\148.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\149.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\150.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\151.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\152.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\153.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\154.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\155.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\156.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\157.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\158.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\159.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\160.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\161.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\162.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\163.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\164.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\165.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\166.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\167.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\168.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\169.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\170.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\171.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\172.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\173.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\174.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\175.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\176.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Animations\npcGraphic\Default\177.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite" sid="881829398584185">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="864630764532916" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Desktop\112.png">
+                        <collision-poly>
+                            <point x="0.15625" y="0.15625" />
+                            <point x="0.5" y="0" />
+                            <point x="0.84375" y="0.15625" />
+                            <point x="0.96875" y="0.5" />
+                            <point x="0.8125" y="0.8125" />
+                            <point x="0.5" y="0.96875" />
+                            <point x="0.15625" y="0.84375" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="exit" sid="835003755187662">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="811939706276205" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Miroslav\Desktop\remove2.png">
+                        <collision-poly>
+                            <point x="0.1875" y="0.1875" />
+                            <point x="0.5" y="0.0625" />
+                            <point x="0.8125" y="0.1875" />
+                            <point x="0.96875" y="0.5" />
+                            <point x="0.78125" y="0.78125" />
+                            <point x="0.5" y="0.875" />
+                            <point x="0.21875" y="0.78125" />
+                            <point x="0.0625" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
