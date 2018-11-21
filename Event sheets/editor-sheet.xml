@@ -3013,7 +3013,7 @@
                                         </action>
                                         <action id="-3" name="Create object" sid="284593463256508" type="System">
                                             <param id="0" name="Object to create">selector</param>
-                                            <param id="1" name="Layer">&quot;Selector&quot;</param>
+                                            <param id="1" name="Layer">&quot;Grid&quot;</param>
                                             <param id="2" name="X">selX</param>
                                             <param id="3" name="Y">selY</param>
                                         </action>
@@ -3043,7 +3043,7 @@
                                         </action>
                                         <action id="-3" name="Create object" sid="149858836387182" type="System">
                                             <param id="0" name="Object to create">selector</param>
-                                            <param id="1" name="Layer">&quot;Selector&quot;</param>
+                                            <param id="1" name="Layer">&quot;Grid&quot;</param>
                                             <param id="2" name="X">selX</param>
                                             <param id="3" name="Y">selY</param>
                                         </action>
