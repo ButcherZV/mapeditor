@@ -3,7 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>editor-sheet</name>
     <events>
-        <variable constant="0" name="selectedNPC" sid="397388836405706" static="0" type="number">-1</variable>
+        <variable constant="0" name="npcB" sid="167586007872584" static="0" type="text"></variable>
         <variable constant="0" name="names" sid="772088141449987" static="0" type="text"></variable>
         <variable constant="0" name="buffer" sid="245496014963245" static="0" type="text"></variable>
         <variable constant="0" name="oldY" sid="702640549545997" static="0" type="number">0</variable>
@@ -20,6 +20,7 @@
         <variable constant="0" name="indexX" sid="436233246968307" static="0" type="number">0</variable>
         <variable constant="0" name="playerY" sid="259895791487424" static="0" type="number">0</variable>
         <variable constant="0" name="playerX" sid="382940712186044" static="0" type="number">0</variable>
+        <variable constant="0" name="bufferNPC" sid="272861518480344" static="0" type="text"></variable>
         <variable constant="0" name="bufferData" sid="934678728524265" static="0" type="text"></variable>
         <variable constant="0" name="bufferMeta" sid="260768971076095" static="0" type="text"></variable>
         <variable constant="0" name="testMap" sid="982165378952631" static="0" type="number">0</variable>
@@ -28,6 +29,7 @@
         <variable constant="0" name="moveLoad" sid="154058984869134" static="0" type="number">0</variable>
         <variable constant="0" name="tileSelected" sid="134634109230752" static="0" type="number">0</variable>
         <variable constant="0" name="playerPlaced" sid="409603303438438" static="0" type="number">0</variable>
+        <variable constant="0" name="selectedNPC" sid="397388836405706" static="0" type="number">-1</variable>
         <variable constant="0" name="weatherSelect" sid="251247472398340" static="0" type="number">0</variable>
         <event-group description="" sid="290684744816422" title="Editor - Initialization">
             <sub-events>
@@ -62,8 +64,8 @@
                             <param id="0" name="Pin to">bgLoad</param>
                             <param id="1" name="Mode">0</param>
                         </action>
-                        <action disabled="1" id="3" name="Clear storage" sid="138430639538028" type="LocalStorage" />
-                        <action id="1" name="Get item" sid="935104204529287" type="LocalStorage">
+                        <action id="3" name="Clear storage" sid="138430639538028" type="LocalStorage" />
+                        <action disabled="1" id="1" name="Get item" sid="935104204529287" type="LocalStorage">
                             <param id="0" name="Key">&quot;data&quot;</param>
                         </action>
                         <action id="1" name="Request project file" sid="573929154968049" type="AJAX">
@@ -568,6 +570,10 @@
                                                     <param id="0" name="Variable">bufferData</param>
                                                     <param id="1" name="Value">tokenat(buffer,1,&quot;/&quot;)</param>
                                                 </action>
+                                                <action id="-9" name="Set value" sid="644300669055569" type="System">
+                                                    <param id="0" name="Variable">bufferNPC</param>
+                                                    <param id="1" name="Value">tokenat(buffer,2,&quot;/&quot;)</param>
+                                                </action>
                                                 <action id="-9" name="Set value" sid="656104235100714" type="System">
                                                     <param id="0" name="Variable">mapName</param>
                                                     <param id="1" name="Value">tokenat(bufferMeta,0,&quot;_&quot;)</param>
@@ -723,46 +729,52 @@
                                                 </event-block>
                                                 <event-block sid="828761798363613">
                                                     <conditions>
-                                                        <condition id="3" name="For each element" sid="401990925413295" type="NpcData">
-                                                            <param id="0" name="Axes">2</param>
+                                                        <condition id="-10" name="For" sid="401990925413295" type="System">
+                                                            <param id="0" name="Name">&quot;i&quot;</param>
+                                                            <param id="1" name="Start index">0</param>
+                                                            <param id="2" name="End index">(tokencount(bufferNPC,&quot;#&quot;) -1)</param>
                                                         </condition>
                                                     </conditions>
                                                     <actions>
+                                                        <action id="-9" name="Set value" sid="896306150406995" type="System">
+                                                            <param id="0" name="Variable">npcB</param>
+                                                            <param id="1" name="Value">tokenat(bufferNPC,loopindex(&quot;i&quot;),&quot;#&quot;)</param>
+                                                        </action>
                                                         <action id="-3" name="Create object" sid="930498634786835" type="System">
                                                             <param id="0" name="Object to create">npc</param>
                                                             <param id="1" name="Layer">&quot;Player&quot;</param>
-                                                            <param id="2" name="X">int(tokenat(NpcData.CurValue,2,&quot;;&quot;))</param>
-                                                            <param id="3" name="Y">int(tokenat(NpcData.CurValue,2,&quot;;&quot;))</param>
-                                                        </action>
-                                                        <action id="5" name="Set frame" sid="359236285936220" type="npc">
-                                                            <param id="0" name="Frame number">int(tokenat(NpcData.CurValue,1,&quot;;&quot;))</param>
+                                                            <param id="2" name="X">tilemap.TileToPositionX(int(tokenat(npcB,2,&quot;;&quot;)))</param>
+                                                            <param id="3" name="Y">tilemap.TileToPositionY(int(tokenat(npcB,3,&quot;;&quot;)))</param>
                                                         </action>
                                                         <action id="-10" name="Set value" sid="684260894515255" type="npc">
                                                             <param id="0" name="Instance variable">name</param>
-                                                            <param id="1" name="Value">tokenat(NpcData.CurValue,0,&quot;;&quot;)</param>
+                                                            <param id="1" name="Value">tokenat(npcB,0,&quot;;&quot;)</param>
+                                                        </action>
+                                                        <action id="5" name="Set frame" sid="359236285936220" type="npc">
+                                                            <param id="0" name="Frame number">int(tokenat(npcB,1,&quot;;&quot;))</param>
                                                         </action>
                                                         <action id="-10" name="Set value" sid="909656997241780" type="npc">
                                                             <param id="0" name="Instance variable">posX</param>
-                                                            <param id="1" name="Value">int(tokenat(NpcData.CurValue,2,&quot;;&quot;))</param>
+                                                            <param id="1" name="Value">int(tokenat(npcB,2,&quot;;&quot;))</param>
                                                         </action>
                                                         <action id="-10" name="Set value" sid="123621978087631" type="npc">
                                                             <param id="0" name="Instance variable">posY</param>
-                                                            <param id="1" name="Value">int(tokenat(NpcData.CurValue,3,&quot;;&quot;))</param>
+                                                            <param id="1" name="Value">int(tokenat(npcB,3,&quot;;&quot;))</param>
                                                         </action>
                                                         <action id="-10" name="Set value" sid="216353656516372" type="npc">
                                                             <param id="0" name="Instance variable">type</param>
-                                                            <param id="1" name="Value">tokenat(NpcData.CurValue,5,&quot;;&quot;)</param>
+                                                            <param id="1" name="Value">tokenat(npcB,5,&quot;;&quot;)</param>
                                                         </action>
                                                         <action id="-10" name="Set value" sid="758059735280497" type="npc">
                                                             <param id="0" name="Instance variable">hasQuest</param>
-                                                            <param id="1" name="Value">int(tokenat(NpcData.CurValue,4,&quot;;&quot;))</param>
+                                                            <param id="1" name="Value">int(tokenat(npcB,4,&quot;;&quot;))</param>
                                                         </action>
                                                     </actions>
                                                 </event-block>
                                                 <event-block sid="459617416556028">
                                                     <conditions />
                                                     <actions>
-                                                        <action id="0" name="Call function" sid="771013788218798" type="Function">
+                                                        <action disabled="1" id="0" name="Call function" sid="771013788218798" type="Function">
                                                             <param id="0" name="Name">&quot;playEffects&quot;</param>
                                                             <param id="1" name="Parameter {n}">weatherSelect{###}fog.show</param>
                                                         </action>
@@ -868,6 +880,14 @@
                                                 </event-block>
                                             </sub-events>
                                         </event-block>
+                                        <event-block sid="946703384332905">
+                                            <conditions />
+                                            <actions>
+                                                <action id="1" name="Append text" sid="418953755240060" type="txtExport">
+                                                    <param id="0" name="Text">&quot;/&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
                                         <event-block sid="651183365195365">
                                             <conditions>
                                                 <condition id="-24" name="For Each (ordered)" sid="798173254411410" type="System">
@@ -877,10 +897,8 @@
                                                 </condition>
                                             </conditions>
                                             <actions>
-                                                <action id="5" name="Push" sid="882367921980540" type="NpcData">
-                                                    <param id="0" name="Where">1</param>
-                                                    <param id="1" name="Value">npc.name &amp; &quot;;&quot; &amp; npc.AnimationFrame&amp; &quot;;&quot; &amp; npc.posX &amp; &quot;;&quot; &amp; npc.posY &amp; &quot;;&quot; &amp; npc.hasQuest &amp; npc.type</param>
-                                                    <param id="2" name="Axis">0</param>
+                                                <action id="1" name="Append text" sid="882367921980540" type="txtExport">
+                                                    <param id="0" name="Text">npc.name &amp; &quot;;&quot; &amp; npc.AnimationFrame &amp; &quot;;&quot; &amp; npc.posX &amp; &quot;;&quot; &amp; npc.posY &amp; &quot;;&quot; &amp; npc.hasQuest &amp; &quot;;&quot; &amp; npc.type &amp; &quot;#&quot;</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -1742,6 +1760,10 @@
                                     <param id="0" name="Group name">&quot;EDITOR&quot;</param>
                                     <param id="1" name="State">0</param>
                                 </action>
+                                <action id="-12" name="Set group active" sid="723420588170308" type="System">
+                                    <param id="0" name="Group name">&quot;UI Buttons&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
                                 <action id="-9" name="Set value" sid="155677010660966" type="System">
                                     <param id="0" name="Variable">oldX</param>
                                     <param id="1" name="Value">playerX</param>
@@ -1817,6 +1839,10 @@
                                     <param id="0" name="Group name">&quot;EDITOR&quot;</param>
                                     <param id="1" name="State">1</param>
                                 </action>
+                                <action id="-12" name="Set group active" sid="949581922605052" type="System">
+                                    <param id="0" name="Group name">&quot;UI Buttons&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
                                 <action id="-13" name="Set boolean" sid="228314361829020" type="btnPlay">
                                     <param id="0" name="Instance variable">isPlaying</param>
                                     <param id="1" name="Value">0</param>
@@ -1886,8 +1912,11 @@
                                     <param id="0" name="Group name">&quot;Map&quot;</param>
                                     <param id="1" name="State">1</param>
                                 </action>
-                                <action behavior="DragDrop" id="0" name="Set enabled" sid="131092510284926" type="npc">
+                                <action behavior="BoundedDragDrop" id="0" name="Set enabled" sid="131092510284926" type="npc">
                                     <param id="0" name="State">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="384484673429112" type="tilePreview">
+                                    <param id="0" name="Visibility">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -1900,8 +1929,11 @@
                                     <param id="0" name="Group name">&quot;Map&quot;</param>
                                     <param id="1" name="State">0</param>
                                 </action>
-                                <action behavior="DragDrop" id="0" name="Set enabled" sid="732923055566182" type="npc">
+                                <action behavior="BoundedDragDrop" id="0" name="Set enabled" sid="732923055566182" type="npc">
                                     <param id="0" name="State">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="199637449107377" type="tilePreview">
+                                    <param id="0" name="Visibility">0</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -2177,6 +2209,7 @@
                                         <action id="0" name="Set text" sid="800850562805777" type="inputNPCname">
                                             <param id="0" name="Text">tokenat(names,int(random(0,4946)),&quot;,&quot;)</param>
                                         </action>
+                                        <action id="8" name="Set unfocused" sid="275728212673697" type="btnRNDname" />
                                     </actions>
                                 </event-block>
                                 <event-block sid="949410438074804">
@@ -2286,6 +2319,7 @@
                                             <param id="0" name="Instance variable">posY</param>
                                             <param id="1" name="Value">int(inputNPCy.Text)</param>
                                         </action>
+                                        <action id="8" name="Set unfocused" sid="100977854655283" type="btnNPCcreate" />
                                     </actions>
                                     <sub-events>
                                         <event-block sid="373252111213792">
@@ -2337,6 +2371,44 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
+                                <event-block sid="358032496605439">
+                                    <conditions>
+                                        <condition id="1" name="On text changed" sid="653952594285109" type="inputNPCx" />
+                                        <condition id="-8" name="Compare two values" sid="874361776961991" type="System">
+                                            <param id="0" name="First value">int(inputNPCx.Text)</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">38</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Alert" sid="843018297158952" type="Browser">
+                                            <param id="0" name="Message">&quot;ERROR: Starting X coordinate cannot be larger than 38!&quot;</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="265808553243670" type="inputNPCx">
+                                            <param id="0" name="Text">&quot;&quot;</param>
+                                        </action>
+                                        <action id="8" name="Set unfocused" sid="657098733917651" type="inputNPCx" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="122352428127214">
+                                    <conditions>
+                                        <condition id="1" name="On text changed" sid="726854903854243" type="inputNPCy" />
+                                        <condition id="-8" name="Compare two values" sid="719163176655750" type="System">
+                                            <param id="0" name="First value">int(inputNPCy.Text)</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">19</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Alert" sid="239669076535649" type="Browser">
+                                            <param id="0" name="Message">&quot;ERROR: Starting Y coordinate cannot be larger than 19!&quot;</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="399751410634512" type="inputNPCy">
+                                            <param id="0" name="Text">&quot;&quot;</param>
+                                        </action>
+                                        <action id="8" name="Set unfocused" sid="761256701450680" type="inputNPCy" />
+                                    </actions>
+                                </event-block>
                             </sub-events>
                         </event-group>
                         <event-group description="" sid="379125177878089" title="Edit NPC">
@@ -2344,10 +2416,30 @@
                                 <comment>Set position of NPC on the grid</comment>
                                 <event-block sid="669552107944511">
                                     <conditions>
-                                        <condition behavior="DragDrop" id="0" name="Is dragging" sid="575942179069098" type="npc" />
+                                        <condition behavior="BoundedDragDrop" id="0" name="Is dragging" sid="575942179069098" type="npc" />
                                         <condition id="0" name="Compare selection" sid="979394913579721" type="modeList">
                                             <param id="0" name="Comparison">0</param>
                                             <param id="1" name="Index">1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="941726234286973" type="System">
+                                            <param id="0" name="First value">Mouse.Y</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">32</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="280579266303196" type="System">
+                                            <param id="0" name="First value">Mouse.Y</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">620</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="397360877820345" type="System">
+                                            <param id="0" name="First value">Mouse.X</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">32</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="307053371639286" type="System">
+                                            <param id="0" name="First value">Mouse.X</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">1240</param>
                                         </condition>
                                     </conditions>
                                     <actions>
@@ -2623,6 +2715,17 @@
                                             </actions>
                                         </event-block>
                                     </sub-events>
+                                </event-block>
+                                <event-block sid="994062948595415">
+                                    <conditions>
+                                        <condition behavior="BoundedDragDrop" id="2" name="On drop" sid="448038965727391" type="npc" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Set position" sid="448342017083094" type="npc">
+                                            <param id="0" name="X">tilemap.SnapX(Self.X)</param>
+                                            <param id="1" name="Y">tilemap.SnapX(Self.Y)</param>
+                                        </action>
+                                    </actions>
                                 </event-block>
                             </sub-events>
                         </event-group>

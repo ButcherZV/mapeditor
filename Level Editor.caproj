@@ -30,7 +30,7 @@
         <plugin author="Scirra" id="sliderbar" version="1">Slider bar</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="DragnDrop" version="1">Drag &amp; Drop</behavior>
+        <behavior author="Chadori_RebornXD &amp; Scirra" id="CV_BoundedDragnDrop" version="1">Bounded Drag &amp; Drop</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Timer" version="1">Timer</behavior>
     </used-behaviors>
@@ -684,8 +684,8 @@
                 <instance-variable name="id" sid="705200506163743" type="number" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="DragDrop" sid="776488718795333">
-                    <behavior id="DragnDrop" />
+                <behavior-type name="BoundedDragDrop" sid="713724951956574">
+                    <behavior id="CV_BoundedDragnDrop" />
                 </behavior-type>
             </behaviors>
             <animation-folder>
